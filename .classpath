@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="/home/jason/Downloads/gson-2.8.5.jar"/>
 	<classpathentry kind="lib" path="/home/jason/git/AstralQuizlet/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/jason/git/JSON/java-json/java-json.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
