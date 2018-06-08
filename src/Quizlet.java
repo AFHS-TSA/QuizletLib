@@ -42,21 +42,68 @@ public class Quizlet {
 	}	
 
 	public static String[] getTerms(String clientID, String setID) throws JSONException, Exception {
-		JSONArray terms_data = setQuiz(clientID, setID).getJSONArray("terms");
-		String[] terms = new String[terms_data.length()];
+		 JSONArray terms_data = setArray(clientID, setID, "terms");
+		 String[] terms = new String[terms_data.length()];
 	     for(int i=0;i<terms_data.length();i++) {
 	    	 terms[i] = terms_data.getJSONObject(i).getString("term");
 	     }
 	     return terms;
 	}
-	
+
+	public static String[] getTerms() throws JSONException, Exception {
+		 JSONArray terms_data = setArray(CLIENT_ID, SET_ID, "terms");
+		 String[] terms = new String[terms_data.length()];
+	     for(int i=0;i<terms_data.length();i++) {
+	    	 terms[i] = terms_data.getJSONObject(i).getString("term");
+	     }
+	     return terms;
+	}	
+
 	public static String[] getDefinition(String clientID, String setID) throws JSONException, Exception {
-		JSONArray terms_data = setQuiz(clientID, setID).getJSONArray("terms");
-		String[] definition = new String[terms_data.length()];
+		 JSONArray terms_data = setArray(clientID, setID, "terms");
+	   	 String[] definition = new String[terms_data.length()];
 	     for(int i=0;i<terms_data.length();i++) {
 	    	 definition[i] = terms_data.getJSONObject(i).getString("definition");
 	     }
 	     return definition;	
+	}
+	
+	public static String[] getDefinition() throws JSONException, Exception {
+		 JSONArray terms_data = setArray(CLIENT_ID, SET_ID, "terms");
+	   	 String[] definition = new String[terms_data.length()];
+	     for(int i=0;i<terms_data.length();i++) {
+	    	 definition[i] = terms_data.getJSONObject(i).getString("definition");
+	     }
+	     return definition;	
+	}
+	
+	public static String getTitle(String clientID, String setID) throws JSONException, Exception {
+	     return setQuiz(clientID, setID).getString("title");
+	}
+	
+	public static String getTitle() throws JSONException, Exception {
+		return setQuiz(CLIENT_ID, SET_ID).getString("title");
+	}
+	
+	public static String getCreator(String clientID, String setID) throws JSONException, Exception {
+		return setQuiz(clientID, setID).getString("created_by");
+	}
+
+	public static String getCreator() throws JSONException, Exception {
+		return setQuiz(CLIENT_ID, SET_ID).getString("created_by");
+	}
+	
+	public static int getTermCount(String clientID, String setID) throws JSONException, Exception {
+		return setQuiz(clientID, setID).getInt("term_count");
+	}
+	
+	public static int getTermCount() throws JSONException, Exception {
+		return setQuiz(CLIENT_ID, SET_ID).getInt("term_count");
+	}
+
+	private static JSONArray setArray(String clientID, String setID, String name) throws JSONException, Exception {
+		JSONArray array = setQuiz(clientID, setID).getJSONArray(name);
+		return array;
 	}
 	
 	public static String getClientID() {
